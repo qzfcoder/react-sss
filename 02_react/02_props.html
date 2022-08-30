@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .title {
+      color: red;
+    }
+  </style>
+  <body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+    <!-- react核心 -->
+    <script src="../00_react_bag/react.development.js"></script>
+    <!-- react操作dom -->
+    <script src="../00_react_bag/react-dom.development.js"></script>
+    <!-- 用于将jsx转换为js -->
+    <script src="../00_react_bag/babel.min.js"></script>
+
+    <script type="text/babel">
+      // 1、创建虚拟dom
+      class Weather extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          return (
+            <ul>
+              <li>姓名：{this.props.name}</li>
+              <li>性别</li>
+              <li>年龄</li>
+            </ul>
+          );
+        }
+      }
+      // 2、渲染虚拟dom到页面
+      ReactDOM.render(<Weather name="123" />, document.getElementById("test"));
+    </script>
+  </body>
+</html>

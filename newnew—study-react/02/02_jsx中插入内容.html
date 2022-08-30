@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 引入react依赖 -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <!-- babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 使用 -->
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "gg",
+            name: [1, 2, 3, 4, 5, 6],
+            friend: {
+              asd: "123",
+              zxc: "456",
+            },
+          };
+        }
+
+        render() {
+          const { message, friend } = this.state;
+          const hh = <h2>{message}</h2>;
+          return (
+            <div>
+              {
+                // jsx的注释
+              }
+              {hh}
+              <h2>{message}</h2>
+              {/*
+                1、当变量为 number string array可以直接显示出来
+                2、null、undefined、boolean类型，则不会显示，要显示可以转成string形式 string()/+''
+                3、object类型不能作为子类型显示
+                4、表达式
+              */}
+              <h2>{name}</h2>
+              <h2>{Object.keys(friend).join(",")}</h2>
+              <h2>{friend.asd}</h2>
+              <h2>{friend.asd + friend.zxc}</h2>
+              <h2>{1 - 1}</h2>
+            </div>
+          );
+        }
+      }
+      root.render(<App />);
+    </script>
+  </body>
+</html>

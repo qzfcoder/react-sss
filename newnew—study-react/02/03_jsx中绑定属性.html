@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .active {
+      color: red;
+    }
+    .gg {
+      font-size: 40px;
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+    <!-- 引入react依赖 -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <!-- babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 使用 -->
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "gg",
+            name: [1, 2, 3, 4, 5, 6],
+            friend: {
+              asd: "123",
+              zxc: "456",
+            },
+            imgUrl:
+              "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F25868c28b95199d8bc5195f85465f7c8b5f5c33136364-fBBYeH_fw658&refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1664379568&t=deecdaf228fc89ab49aa14b72f49142b",
+            isActive: true,
+            classList: ["1", "2"],
+          };
+        }
+
+        render() {
+          const { message, friend, imgUrl, isActive } = this.state;
+          const hh = <h2>{message}</h2>;
+          return (
+            <div>
+              {
+                // jsx的注释
+              }
+              {hh}
+              <h2 title={message}>{message}</h2>
+              {/*
+                类和动态类绑定
+              */}
+              <h2 className={`${message} ${isActive ? "active" : ""}`}>hh</h2>
+              <h2 className={Object.keys(friend).join(" ")}>hh</h2>
+              <img src={imgUrl} alt="" />
+
+              {/*
+                1、当变量为 number string array可以直接显示出来
+                2、null、undefined、boolean类型，则不会显示，要显示可以转成string形式 string()/+''
+                3、object类型不能作为子类型显示
+                4、表达式
+              */}
+              <h2>{name}</h2>
+              <h2>{Object.keys(friend).join(",")}</h2>
+              <h2>{friend.asd}</h2>
+              <h2>{friend.asd + friend.zxc}</h2>
+              <h2>{1 - 1}</h2>
+            </div>
+          );
+        }
+      }
+      root.render(<App />);
+    </script>
+  </body>
+</html>

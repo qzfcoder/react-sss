@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .title {
+      color: red;
+    }
+  </style>
+  <body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+    <!-- react核心 -->
+    <script src="../00_react_bag/react.development.js"></script>
+    <!-- react操作dom -->
+    <script src="../00_react_bag/react-dom.development.js"></script>
+    <!-- 用于将jsx转换为js -->
+    <script src="../00_react_bag/babel.min.js"></script>
+
+    <script type="text/babel">
+      const data = "123";
+      const list = ["angular", "react", "vue"];
+      // 1、创建虚拟dom
+      const VDom = (
+        <h1 id="title">
+          <h1>前端js框架</h1>
+          <ul>
+            {list.map((item, index) => {
+              return <li key={index}>{item}</li>;
+            })}
+          </ul>
+        </h1>
+      );
+      /* jsx8
+       *   1、定义虚拟Dom的时候不写引号
+       *   2、读取外部变量的时候需要{}包裹
+       *   3、绑定样式等使用className
+       *   4、使用内联样式 {{}}包裹
+       *   5、jsx中只能存在一个根标签
+       *   6、标签必须闭合
+       *   7、标签首字母
+       *      （1）若小写字母开头，则将标签改为html中同名元素，若html中没有，则报错
+       *      （2）若大写字母开头，react就去渲染对应的组件，若组件没有定义则报错
+       */
+
+      // 2、渲染虚拟dom到页面
+      ReactDOM.render(VDom, document.getElementById("test"));
+    </script>
+  </body>
+</html>

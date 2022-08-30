@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style></style>
+  <body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+    <!-- react核心 -->
+    <script src="../00_newReact_bag/react.development.js"></script>
+    <!-- react操作dom -->
+    <script src="../00_newReact_bag/react-dom.development.js"></script>
+
+    <!-- 用于将jsx转换为js -->
+    <script src="../00_newReact_bag/babel.min.js"></script>
+    <!-- propTypes -->
+    <script src="../00_newReact_bag/prop-types.js"></script>
+    <script type="text/babel">
+      // 1、创建虚拟dom
+      class Person extends React.Component {
+        state = {
+          persons: [
+            { id: 1, name: "zs", age: 1 },
+            { id: 2, name: "gg", age: 2 },
+          ],
+        };
+        add = () => {
+          const { persons } = this.state;
+          const p = {
+            id: persons.length,
+            name: persons.length,
+            age: persons.length,
+          };
+          this.setState({
+            persons: [p, ...persons],
+          });
+        };
+        render() {
+          return (
+            <div>
+              <button onClick={this.add}>增加</button>
+              <ul>
+                {this.state.persons.map((item, index) => {
+                  return (
+                    <li key={index}>
+                      {item.name}-{item.age}
+                      <input type="text" />
+                    </li>
+                  );
+                })}
+              </ul>
+              <ul>
+                {this.state.persons.map((item, index) => {
+                  return (
+                    <li key={item.name + index}>
+                      {item.name}-{item.age}
+                      <input type="text" />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        }
+      }
+      // 2、渲染虚拟dom到页面
+      ReactDOM.render(<Person />, document.getElementById("test"));
+    </script>
+  </body>
+</html>
