@@ -50,6 +50,7 @@
         render() {
           const { message, friend, imgUrl, isActive } = this.state;
           const hh = <h2>{message}</h2>;
+          const style = { color: "blue", fontSize: "20px" };
           return (
             <div>
               {
@@ -58,12 +59,18 @@
               {hh}
               <h2 title={message}>{message}</h2>
               {/*
+                样式和动态样式绑定
+                下方这种已经不支持了
+                <h2 style="color:blue">hh</h2>
+              */}
+              <h2 style={{ color: "blue" }}>asd</h2>
+              <h2 style={style}>asd</h2>
+              {/*
                 类和动态类绑定
               */}
               <h2 className={`${message} ${isActive ? "active" : ""}`}>hh</h2>
               <h2 className={Object.keys(friend).join(" ")}>hh</h2>
               <img src={imgUrl} alt="" />
-
               {/*
                 1、当变量为 number string array可以直接显示出来
                 2、null、undefined、boolean类型，则不会显示，要显示可以转成string形式 string()/+''
