@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .active {
+      color: red;
+    }
+
+    .hover {
+      cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <div id="root"></div>
+    <!-- 引入react依赖 -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <!-- babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 使用 -->
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "123213",
+            isReady: true,
+
+            students: [
+              { id: 1, name: "qzf", sss: 1 },
+              { id: 2, name: "dwb", sss: 1 },
+              { id: 3, name: "jj", sss: 1 },
+              { id: 4, name: "hyh", sss: 1 },
+            ],
+          };
+        }
+
+        render() {
+          const { students } = this.state;
+          return (
+            <div>
+              <h2>列表</h2>
+              <div className="list">
+                {students.map((student) => {
+                  return (
+                    <div className="item" key={student.id}>
+                      <h2>序号：{student.id}</h2>
+                      <h2>名称：{student.name}</h2>
+                      <h2>sss：{student.sss}</h2>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        }
+      }
+      root.render(<App />);
+    </script>
+  </body>
+</html>

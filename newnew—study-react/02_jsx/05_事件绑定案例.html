@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .active {
+      color: red;
+    }
+    .hover {
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+    <!-- 引入react依赖 -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <!-- babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 使用 -->
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            movies: ["angular", "react", "vue"],
+            currentIndex: 0,
+          };
+        }
+        btnClick = (e, f) => {
+          this.setState({
+            currentIndex: f,
+          });
+          console.log(e);
+        };
+
+        render() {
+          const { movies, currentIndex } = this.state;
+          return (
+            <div>
+              <ul>
+                {movies.map((item, index) => {
+                  return (
+                    <li
+                      key={item}
+                      className={
+                        currentIndex == index ? "active hover" : "hover"
+                      }
+                      onClick={(e) => this.btnClick(e, index)}
+                    >
+                      {item}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        }
+      }
+      root.render(<App />);
+    </script>
+  </body>
+</html>

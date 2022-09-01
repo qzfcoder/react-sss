@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- 引入react依赖 -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <!-- babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 使用 -->
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "hello world",
+          };
+        }
+        btnClick = (e) => {
+          console.log(e);
+        };
+        btnClick2 = (e, f) => {
+          console.log(e, f);
+        };
+        render() {
+          return (
+            <div>
+              <h2>{this.state.message}</h2>
+              <button onClick={this.btnClick}>点击</button>
+              <button onClick={(e) => this.btnClick2(e, "传递额外参数")}>
+                点击
+              </button>
+            </div>
+          );
+        }
+      }
+      root.render(<App />);
+    </script>
+  </body>
+</html>
