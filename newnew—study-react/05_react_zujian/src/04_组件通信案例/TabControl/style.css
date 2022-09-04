@@ -1,0 +1,15 @@
+.tab-control {
+  display: flex;
+  height: 40px;
+}
+.tab-control .item{
+  flex: 1;
+}
+
+.tab-control .item.active{
+  color: rebeccapurple;
+}
+
+.tab-control .item.active span{
+  border-bottom: 3px solid rebeccapurple;
+}
