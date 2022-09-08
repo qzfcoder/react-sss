@@ -58,7 +58,15 @@ export class App extends PureComponent {
       hobbies: hobbies,
     });
   }
-
+  handleChange2(e) {
+    // console.log(e.target.selectedOptions);
+    const options = Array.from(e.target.selectedOptions);
+    const values = options.map((item) => item.value);
+    console.log(values);
+    this.setState({
+      selectArr: values,
+    });
+  }
   render() {
     const { username, password, isAgree, hobbies, selectSome, selectArr } =
       this.state;
@@ -157,12 +165,14 @@ export class App extends PureComponent {
             <option value="华为">华为</option>
             <option value="vivo">vivo</option>
           </select>
+          <br />
+
           <select
             name=""
             id=""
             value={selectArr}
             multiple
-            onChange={(e) => this.handleChange(e)}
+            onChange={(e) => this.handleChange2(e)}
           >
             <option value="apple">apple</option>
             <option value="华为">华为</option>
