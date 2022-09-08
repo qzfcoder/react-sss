@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
-export class Recommend extends Component {
+export class Recommend extends PureComponent {
   render() {
     console.log("Recommend");
     return (
