@@ -157,7 +157,7 @@ export class App extends PureComponent {
             <option value="华为">华为</option>
             <option value="vivo">vivo</option>
           </select>
-          <selec
+          <select
             name=""
             id=""
             value={selectArr}
@@ -167,7 +167,7 @@ export class App extends PureComponent {
             <option value="apple">apple</option>
             <option value="华为">华为</option>
             <option value="vivo">vivo</option>
-          </selec>
+          </select>
           <br />
           <button type="submit">提交</button>
         </form>
