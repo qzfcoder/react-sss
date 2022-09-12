@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, createRef } from "react";
 
 export class App extends PureComponent {
   constructor(props) {
@@ -26,7 +26,14 @@ export class App extends PureComponent {
       ],
       selectSome: "apple",
       selectArr: ["apple", "华为"],
+      intro: "hhhh",
     };
+    this.introRef = createRef();
+  }
+  componentDidMount() {
+    this.introRef.current.addEventListener("change", (e) => {
+      console.log(e);
+    });
   }
   handleSubmitClick(e) {
     // 阻止浏览器默认行为
@@ -39,6 +46,7 @@ export class App extends PureComponent {
         .filter((item) => item.isChecked)
         .map((item) => item.value)
     );
+    console.log("获取结果", this.introRef.current.value);
     // 以网络请求的方式，讲数据发送给服务器
   }
   handleChangeBox(e) {
@@ -68,8 +76,15 @@ export class App extends PureComponent {
     });
   }
   render() {
-    const { username, password, isAgree, hobbies, selectSome, selectArr } =
-      this.state;
+    const {
+      username,
+      password,
+      isAgree,
+      hobbies,
+      selectSome,
+      selectArr,
+      intro,
+    } = this.state;
     return (
       <div>
         <form onSubmit={(e) => this.handleSubmitClick(e)}>
@@ -178,6 +193,8 @@ export class App extends PureComponent {
             <option value="华为">华为</option>
             <option value="vivo">vivo</option>
           </select>
+          <br />
+          <input type="text" defaultValue={intro} ref={this.introRef} />
           <br />
           <button type="submit">提交</button>
         </form>

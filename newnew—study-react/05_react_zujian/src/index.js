@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 // import './index.css';
-import App from "./12_受控组件和非受控组件/App.jsx";
+import App from "./13_高阶组件/App.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
