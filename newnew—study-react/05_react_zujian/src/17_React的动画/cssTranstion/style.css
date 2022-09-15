@@ -1,0 +1,14 @@
+.transf-enter {
+  opacity: 0;
+}
+.transf-enter-active {
+  opacity: 1;
+  transition: opacity 2s ease;
+}
+.transf-exit {
+  opacity: 1;
+}
+.transf-exit-active {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
