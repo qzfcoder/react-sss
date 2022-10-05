@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 // import store from '../store'
 import { connect } from "react-redux";
 import store from "../store";
-import { addNumberAction, delNumberAction } from "../store/actionCreator";
+import { addNumberAction, delNumberAction } from "../store/home/actionCreator";
 export class About extends PureComponent {
   calcNumber(e, idADD) {
     if (idADD) {
@@ -13,7 +13,7 @@ export class About extends PureComponent {
     }
   }
   render() {
-    const { counter } = this.props;
+    const { counter, banner, recommend } = this.props;
     return (
       <div>
         <h2>About counter : {counter}</h2>
@@ -22,6 +22,22 @@ export class About extends PureComponent {
           <button onClick={(e) => this.calcNumber(33, false)}>-33</button>
           <button onClick={(e) => this.calcNumber(11, true)}>+11</button>
         </div>
+        <div className="banner">
+          <h2>轮播图数据</h2>
+          <ul>
+            {banner.map((item, index) => {
+              return <li key={index}>{item.title}</li>;
+            })}
+          </ul>
+        </div>
+        <div className="recommend">
+          <h2>推荐数据</h2>
+          <ul>
+            {recommend.map((item, index) => {
+              return <li key={index}>{item.title}</li>;
+            })}
+          </ul>
+        </div>
       </div>
     );
   }
@@ -29,8 +45,9 @@ export class About extends PureComponent {
 
 function map(state) {
   return {
-    counter: state.counter,
-    // banner: state.banner
+    counter: state.home.counter,
+    banner: state.counter.banner,
+    recommend: state.counter.recommend,
   };
 }
 // 接受的是dispatch
