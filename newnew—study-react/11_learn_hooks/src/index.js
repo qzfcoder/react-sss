@@ -1,16 +1,11 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import { HashRouter } from "react-router-dom";
+import App from "./04_useEffect的使用/App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Suspense fallback={<h3>Loading</h3>}>
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </Suspense>
+    <App />
   </React.StrictMode>
 );
 

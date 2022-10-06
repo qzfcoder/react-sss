@@ -5,15 +5,10 @@ import {
   NavLink,
   Navigate,
   useNavigate,
+  Link,
+  useRoutes,
 } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Login from "./pages/Login";
-import HomeRecommend from "./pages/HomeRecommend";
-import HomeRanking from "./pages/HomeRanking";
-import Order from "./pages/order";
-import Category from "./pages/category";
-import NotFound from "./pages/NotFound";
+import routes from "./router/index";
 import "./style.css";
 export function App(props) {
   const navigate = useNavigate();
@@ -41,12 +36,13 @@ export function App(props) {
           <NavLink to="/login">login</NavLink>
           <button onClick={(e) => navigateTo("/category")}>分类</button>
           <span onClick={(e) => navigateTo("/order")}>订单</span>
+          <Link to="/User?name=q&age=1">用户</Link>
         </div>
         <hr />
       </div>
       <div className="content">
         {/* 映射关系，path=》component */}
-        <Routes>
+        {/* <Routes>
           <Route path="/home" element={<Home />}>
             <Route
               path="/home"
@@ -57,15 +53,18 @@ export function App(props) {
               element={<HomeRecommend />}
             ></Route>
             <Route path="/home/HomeRanking" element={<HomeRanking />}></Route>
+            <Route path="/home/HomeSongMenu" element={<HomeSongMenu />}></Route>
           </Route>
           <Route path="/" element={<Navigate to="/home" />}></Route>
-          {/* <Route path="/" element={<Home />}></Route> */}
           <Route path="/about" element={<About />}></Route>
+          <Route path="/User" element={<User />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/Order" element={<Order />}></Route>
           <Route path="/Category" element={<Category />}></Route>
+          <Route path="/Detail/:id" element={<Detail />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
-        </Routes>
+        </Routes> */}
+        {useRoutes(routes)}
       </div>
       <div className="footer">
         <hr />
